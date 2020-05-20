@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
     //   return Object.assign({}, state, ...action.payload);
     case HYDRATE:
       return {
-        ...state, ...action.payload
+        ...state
       };
     case ADD_POST: {
       return {
@@ -40,7 +40,7 @@ const reducer = (state = initialState, action) => {
     case ADD_DUMMY: {
       return {
         ...state,
-        mainPosts: [action.data, ...state.mainPosts],
+        mainPosts: [action.payload, ...state.mainPosts],
       }
     }
     default: {

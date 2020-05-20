@@ -9,7 +9,7 @@ import {
 import {
   composeWithDevTools
 } from 'redux-devtools-extension';
-import rootReducer from './reducers/index';
+import rootReducer from './reducers';
 
 
 const makeStore = (context) => {

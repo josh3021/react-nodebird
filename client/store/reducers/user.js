@@ -3,8 +3,7 @@ import {
 } from "next-redux-wrapper";
 
 export const initialState = {
-  isLoggedIn: false,
-  user: {}
+  isLoggedIn: false
 };
 
 //액션의 이름
@@ -19,27 +18,29 @@ export const loginAction = {
 }
 
 export const logoutAction = {
-  type: LOG_OUT
+  type: LOG_OUT,
+  data: {}
 }
 
 const reducer = (state = initialState, action) => {
+  console.log(`action.payload: ${JSON.stringify(action.payload)}`)
   switch (action.type) {
     case HYDRATE: {
       return {
-        ...state,
-        ...action.payload
+        ...state
       }
     }
     case LOG_IN: {
       return {
         ...state,
+        isLoggedIn: true,
+        ...action.data
       }
     }
     case LOG_OUT: {
       return {
         ...state,
         isLoggedIn: false,
-        user: {}
       }
     }
     default: {
