@@ -12,7 +12,7 @@ import {
 import rootReducer from './reducers';
 
 
-const makeStore = (context) => {
+const makeStore = () => {
   const middlewares = []; //puts middleware here
   const enhancer = process.env.NODE_ENV === 'production' ?
     compose(applyMiddleware(...middlewares)) :

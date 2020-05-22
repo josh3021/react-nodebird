@@ -3,7 +3,11 @@ import {
 } from "next-redux-wrapper";
 
 export const initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  nickname: null,
+  Posts: [],
+  Followings: [],
+  Followers: [],
 };
 
 //액션의 이름

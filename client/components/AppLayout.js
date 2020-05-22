@@ -2,14 +2,15 @@ import {Col, Input, Menu, Row} from "antd";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import React from "react";
+import {useSelector} from "react-redux";
 import LoginForm from "./LoginForm";
 import ProfileCard from "./ProfileCard";
 
-const dummy = {
-  isLoggedIn: false,
-};
-
 const AppLayout = ({children}) => {
+  const user = useSelector((state) => state.user);
+
+  const isLoggedIn = user.isLoggedIn;
+
   return (
     <div>
       <Menu mode="horizontal">
@@ -34,7 +35,7 @@ const AppLayout = ({children}) => {
       </Menu>
       <Row gutter={10}>
         <Col xs={24} md={6}>
-          {dummy.isLoggedIn ? <ProfileCard /> : <LoginForm />}
+          {isLoggedIn ? <ProfileCard /> : <LoginForm />}
         </Col>
         <Col xs={24} md={6}>
           {children}

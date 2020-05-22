@@ -4,7 +4,7 @@ import {
   MessageOutlined,
   RetweetOutlined,
 } from "@ant-design/icons";
-import {Avatar, Card} from "antd";
+import {Avatar, Button, Card} from "antd";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -19,8 +19,7 @@ const PostCard = ({post}) => {
         <MessageOutlined key="messaage" />,
         <EllipsisOutlined key="ellipsis" />,
       ]}
-      // extra={}>
-    >
+      extra={<Button>팔로우</Button>}>
       <Card.Meta
         avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
         title={post.User.title}

@@ -1,7 +1,9 @@
 import {Button, Checkbox, Form, Input} from "antd";
 import React, {useCallback} from "react";
+import {useDispatch} from "react-redux";
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const onFinish = useCallback((values) => {
     console.log(`successFinish: ${JSON.stringify(values)}`);
   }, []);
