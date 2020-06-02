@@ -20,9 +20,7 @@ const PostForm = () => {
           return (
             <div key={v} style={{display: "inline-block"}}>
               <img
-                src={
-                  "https://image.shutterstock.com/image-vector/sample-stamp-grunge-texture-vector-260nw-1389188336.jpg"
-                }
+                src="https://image.shutterstock.com/image-vector/sample-stamp-grunge-texture-vector-260nw-1389188336.jpg"
                 style={{width: "200px"}}
                 alt={v}
               />

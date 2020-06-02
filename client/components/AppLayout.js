@@ -1,15 +1,15 @@
-import {Col, Input, Menu, Row} from "antd";
-import Link from "next/link";
-import PropTypes from "prop-types";
-import React from "react";
-import {useSelector} from "react-redux";
-import LoginForm from "./LoginForm";
-import ProfileCard from "./ProfileCard";
+import { Col, Input, Menu, Row } from 'antd';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import LoginForm from './LoginForm';
+import ProfileCard from './ProfileCard';
 
-const AppLayout = ({children}) => {
+const AppLayout = ({ children }) => {
   const user = useSelector((state) => state.user);
 
-  const isLoggedIn = user.isLoggedIn;
+  const { isLoggedIn } = user;
 
   return (
     <div>
@@ -21,14 +21,14 @@ const AppLayout = ({children}) => {
         </Menu.Item>
         <Menu.Item key="profile">
           <Link href="/profile">
-            <a>프로필</a>
+            <a> 프로필 </a>
           </Link>
         </Menu.Item>
         <Menu.Item key="mail">
           <Input.Search
             enterButton
             style={{
-              verticalAlign: "middle",
+              verticalAlign: 'middle',
             }}
           />
         </Menu.Item>
@@ -40,7 +40,7 @@ const AppLayout = ({children}) => {
         <Col xs={24} md={6}>
           {children}
         </Col>
-        <Col xs={24} md={6}></Col>
+        <Col xs={24} md={6} />
         <Col xs={24} md={6}>
           베베베
         </Col>
@@ -50,7 +50,7 @@ const AppLayout = ({children}) => {
 };
 
 AppLayout.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element.isRequired,
 };
 
 export default AppLayout;

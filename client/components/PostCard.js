@@ -3,12 +3,12 @@ import {
   HeartOutlined,
   MessageOutlined,
   RetweetOutlined,
-} from "@ant-design/icons";
-import {Avatar, Button, Card} from "antd";
-import PropTypes from "prop-types";
-import React from "react";
+} from '@ant-design/icons';
+import { Avatar, Button, Card } from 'antd';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const PostCard = ({post}) => {
+const PostCard = ({ post }) => {
   return (
     <Card
       key={+post.createdAt}
@@ -19,9 +19,10 @@ const PostCard = ({post}) => {
         <MessageOutlined key="messaage" />,
         <EllipsisOutlined key="ellipsis" />,
       ]}
-      extra={<Button>팔로우</Button>}>
+      extra={<Button> 팔로우 </Button>}
+    >
       <Card.Meta
-        avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
+        avatar={<Avatar> {post.User.nickname[0]} </Avatar>}
         title={post.User.title}
         description={post.content}
       />
@@ -31,8 +32,8 @@ const PostCard = ({post}) => {
 
 PostCard.propTypes = {
   post: PropTypes.shape({
-    User: PropTypes.object,
-    content: PropTypes.string,
+    User: PropTypes.object.isRequired,
+    content: PropTypes.string.isRequired,
     img: PropTypes.string,
     createdAt: PropTypes.string,
   }),
