@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LOG_IN_REQUEST } from '../store/reducers/user';
 
 const LoginForm = () => {
-  const { isLoggingIn } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
+  const { isLoggingIn, me } = user;
+
   const dispatch = useDispatch();
   const onFinish = (values) => {
     dispatch({

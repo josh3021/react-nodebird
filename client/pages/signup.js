@@ -1,19 +1,34 @@
 import { Button, Checkbox, Form, Input } from 'antd';
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import Router from 'next/router';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { SIGN_UP_REQUEST } from '../store/reducers/user';
 
 const Signup = () => {
+  const user = useSelector((state) => state.user);
+  const { isSigningup, me } = user;
+  useEffect(() => {
+    if (me) {
+      alert('redirecting...');
+      Router.push('/');
+    }
+  }, [me && me.id]);
   const dispatch = useDispatch();
-  const onFinish = useCallback((values) => {
+  const onFinish = (values) => {
     dispatch({
       type: SIGN_UP_REQUEST,
       data: values,
     });
-  }, []);
-  const onFinishFailed = useCallback(({ errorFields: [{ errors: [errorvalues] }] }) => {
+  };
+  const onFinishFailed = ({
+    errorFields: [
+      {
+        errors: [errorvalues],
+      },
+    ],
+  }) => {
     alert(errorvalues);
-  }, []);
+  };
 
   return (
     <Form
@@ -93,7 +108,7 @@ const Signup = () => {
         <Checkbox> Remember me </Checkbox>
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={isSigningup}>
           회원가입
         </Button>
       </Form.Item>

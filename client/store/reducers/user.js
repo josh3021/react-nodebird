@@ -1,13 +1,11 @@
-import {
-  HYDRATE
-} from "next-redux-wrapper";
+import { HYDRATE } from 'next-redux-wrapper';
 
 const dummyUser = {
+  id: 1,
   nickname: '제로초',
   Post: [],
   Followings: [],
   Followers: [],
-  id: 1,
 };
 
 export const initialState = {
@@ -63,15 +61,16 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case HYDRATE: {
       return {
-        ...state
-      }
+        ...state,
+      };
     }
     case LOG_IN_REQUEST: {
       return {
         ...state,
         isLoggedIn: false,
         logInErrorReason: '',
-      }
+        isLoggingIn: true,
+      };
     }
     case LOG_IN_SUCCESS: {
       return {
@@ -79,8 +78,7 @@ export default (state = initialState, action) => {
         isLoggingIn: false,
         isLoggedIn: true,
         me: dummyUser,
-        isLoading: false,
-      }
+      };
     }
     case LOG_IN_FAILURE: {
       return {
@@ -88,42 +86,42 @@ export default (state = initialState, action) => {
         isLoggingIn: false,
         isLoggedIn: false,
         logInErrorReason: action.error,
-        me: null
-      }
+        me: null,
+      };
     }
     case LOG_OUT_REQUEST: {
       return {
         ...state,
         isLoggedIn: false,
-        me: null
-      }
+        me: null,
+      };
     }
     case SIGN_UP_REQUEST: {
       return {
         ...state,
         isSigningUp: true,
         isSignedUp: false,
-        signUpErrorReason: ''
-      }
+        signUpErrorReason: '',
+      };
     }
     case SIGN_UP_SUCCESS: {
       return {
         ...state,
         isSigningUp: false,
-        isSignedUp: true
-      }
+        isSignedUp: true,
+      };
     }
     case SIGN_UP_FAILURE: {
       return {
         ...state,
         isSigningUp: false,
-        signUpErrorReason: action.error
-      }
+        signUpErrorReason: action.error,
+      };
     }
     default: {
       return {
-        ...state
-      }
+        ...state,
+      };
     }
   }
-}
+};

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { all, fork, takeLatest } from 'redux-saga/effects';
+import { all, delay, fork, put, takeLatest } from 'redux-saga/effects';
 import {
   ADD_COMMENT_FAILURE,
   ADD_COMMENT_REQUEST,
@@ -17,6 +17,7 @@ function addPostAPI() {
 function* addPost() {
   try {
     //yield call(addPostAPI);
+    yield delay(2000);
     yield put({
       type: ADD_POST_SUCCESS,
     });
@@ -36,11 +37,12 @@ function addCommentAPI() {
   return axios.post('/addComment');
 }
 
-function* addComment() {
+function* addComment({ data }) {
   try {
     // yield addCommentAPI();
     yield put({
       type: ADD_COMMENT_SUCCESS,
+      data,
     });
   } catch (e) {
     console.error(e);
