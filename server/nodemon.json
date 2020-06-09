@@ -1,0 +1,5 @@
+{
+  "watch": ["index.js", "routes", "database/config", "passport", "database/models", "nodemon.json"],
+  "exec": "node -r esm index.js",
+  "ext": "js json"
+}

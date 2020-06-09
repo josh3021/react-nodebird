@@ -1,4 +1,7 @@
 client/node_modules
 client/yarn.lock
-client/.next
 client/yarn-error.log
+client/.next
+server/node_modules
+server/.env
+server/config.json
