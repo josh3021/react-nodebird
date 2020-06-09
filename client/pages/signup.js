@@ -15,6 +15,9 @@ const Signup = () => {
   }, [me && me.id]);
   const dispatch = useDispatch();
   const onFinish = (values) => {
+    if (values.password !== values.password_confirm) {
+      return alert('비밀번호가 일치하지 않습니다.');
+    }
     dispatch({
       type: SIGN_UP_REQUEST,
       data: values,
@@ -61,7 +64,7 @@ const Signup = () => {
       </Form.Item>
       <Form.Item
         label="닉네임"
-        name="username"
+        name="nickname"
         rules={[
           {
             required: true,
@@ -85,7 +88,7 @@ const Signup = () => {
       </Form.Item>
       <Form.Item
         label="비밀번호 확인"
-        name="password-confirm"
+        name="password_confirm"
         rules={[
           {
             required: true,

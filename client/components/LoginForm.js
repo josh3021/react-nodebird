@@ -29,8 +29,8 @@ const LoginForm = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="아이디"
-        name="username"
+        label="이메일"
+        name="email"
         rules={[
           {
             required: true,

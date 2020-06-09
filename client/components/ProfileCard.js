@@ -17,7 +17,7 @@ const ProfileCard = () => {
       title="Profile"
       actions={[
         <div key="twit">
-          짹짹 <br /> {me.Post.length}
+          짹짹 <br /> {me.Posts.length}
         </div>,
         <div key="following">
           팔로잉 <br /> {me.Followings.length}

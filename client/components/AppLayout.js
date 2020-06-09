@@ -1,15 +1,24 @@
 import { Col, Input, Menu, Row } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { LOAD_USER_REQUEST } from '../store/reducers/user';
 import LoginForm from './LoginForm';
 import ProfileCard from './ProfileCard';
 
 const AppLayout = ({ children }) => {
   const user = useSelector((state) => state.user);
 
-  const { isLoggedIn } = user;
+  const { me } = user;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!me) {
+      dispatch({
+        type: LOAD_USER_REQUEST,
+      });
+    }
+  }, []);
 
   return (
     <div>
@@ -35,7 +44,7 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row gutter={10}>
         <Col xs={24} md={6}>
-          {isLoggedIn ? <ProfileCard /> : <LoginForm />}
+          {me ? <ProfileCard /> : <LoginForm />}
         </Col>
         <Col xs={24} md={6}>
           {children}

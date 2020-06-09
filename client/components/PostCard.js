@@ -10,7 +10,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_COMMENT_REQUEST } from '../store/reducers/post';
 
-const PostCard = ({ mainPost, me, isLoggedIn }) => {
+const PostCard = ({ mainPost, me }) => {
   const [commentFormOpened, setCommentFormOpened] = useState(false);
   const [commentContent, setCommentContent] = useState('');
 
@@ -21,7 +21,6 @@ const PostCard = ({ mainPost, me, isLoggedIn }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(commentAdded);
     setCommentContent('');
   }, [commentAdded === true]);
 
@@ -30,12 +29,11 @@ const PostCard = ({ mainPost, me, isLoggedIn }) => {
   };
 
   const onChangeCommentText = useCallback((e) => {
-    console.log(commentContent);
     setCommentContent(e.target.value);
   }, []);
 
   const onSubmitComment = (data) => {
-    if (!isLoggedIn) {
+    if (!me) {
       return alert('로그인을 먼저해주세요.');
     }
     // 후에 me도 넣어줘야겠지?
@@ -51,7 +49,7 @@ const PostCard = ({ mainPost, me, isLoggedIn }) => {
   return (
     <div>
       <Card
-        key={mainPost.createdAt}
+        key={+mainPost.createdAt}
         cover={mainPost.img && <img alt="example" src={mainPost.img} />}
         actions={[
           <RetweetOutlined key="retweet" />,
@@ -102,10 +100,9 @@ PostCard.propTypes = {
     User: PropTypes.object.isRequired,
     content: PropTypes.string.isRequired,
     img: PropTypes.string,
-    createdAt: PropTypes.number.isRequired,
+    createdAt: PropTypes.string.isRequired,
   }),
   me: PropTypes.any,
-  isLoggedIn: PropTypes.bool,
 };
 
 export default PostCard;

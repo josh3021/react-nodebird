@@ -22,7 +22,6 @@ const PostForm = () => {
   };
 
   const normFile = (e) => {
-    console.log('Uplaod event: ', e);
     if (Array.isArray(e)) {
       return e;
     }
@@ -36,7 +35,7 @@ const PostForm = () => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
-      <Form.Item name="text" max={140}>
+      <Form.Item name="content" max={140}>
         <Input.TextArea maxLength={140} placeholder="블라블라" />
       </Form.Item>
       <div>
